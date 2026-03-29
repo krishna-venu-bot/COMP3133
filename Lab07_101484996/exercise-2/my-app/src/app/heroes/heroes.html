@@ -1,0 +1,15 @@
+<h2>My Heroes</h2>
+
+<ul>
+  <li *ngFor="let hero of heroes" (click)="selectHero(hero)">
+    {{ hero.name | removeSpaces }}
+  </li>
+
+  <input type="text" inputFormat placeholder="Type something" />
+</ul>
+
+<div *ngIf="selectedHero">
+  <h3>{{ selectedHero.name }} Details</h3>
+
+  <input [(ngModel)]="selectedHero.name" />
+</div>
