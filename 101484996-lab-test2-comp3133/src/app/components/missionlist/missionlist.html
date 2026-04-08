@@ -1,0 +1,19 @@
+<h1>SpaceX Mission Launch List</h1>
+
+<app-missionfilter (yearEvent)="filterByYear($event)"></app-missionfilter>
+
+@for (mission of filteredMissions(); track mission.flight_number) {
+
+  <div class="card" (click)="goToDetails(mission)">
+
+    <img [src]="mission.links.patch.small" width="60" />
+
+    <h3>{{ mission.name }}</h3>
+
+    <p><b>Flight #:</b> {{ mission.flight_number }}</p>
+
+    <p>{{ mission.details || 'No details available' }}</p>
+
+  </div>
+
+}

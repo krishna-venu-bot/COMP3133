@@ -1,0 +1,37 @@
+<div *ngIf="loading">
+  <p>Loading...</p>
+</div>
+
+<div *ngIf="!loading && mission">
+
+  <h2>{{ mission.name || 'No Name' }}</h2>
+
+  <img *ngIf="mission.links?.patch?.small; else noImg"
+       [src]="mission.links.patch.small"
+       width="150" />
+
+  <ng-template #noImg>
+    <p>No Image Available</p>
+  </ng-template>
+
+  <p><b>Date:</b> {{ mission.date_utc | date }}</p>
+
+  <p><b>Details:</b> {{ mission.details || 'No details available' }}</p>
+
+  <p *ngIf="mission.links?.wikipedia">
+    <a [href]="mission.links.wikipedia" target="_blank">Wikipedia</a>
+  </p>
+
+  <p *ngIf="mission.links?.article">
+    <a [href]="mission.links.article" target="_blank">Article</a>
+  </p>
+
+  <p *ngIf="mission.links?.webcast">
+    <a [href]="mission.links.webcast" target="_blank">Watch Video</a>
+  </p>
+
+</div>
+
+<div *ngIf="!loading && !mission">
+  <p>Mission not found 😢</p>
+</div>
